@@ -1,27 +1,45 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
 
-Vue.use(VueRouter)
+// Layout
+import Layout from '@/components/Layout'
 
-const routes = [
-  {
-    path: '/',
+Vue.use(Router)
+// 静态路由
+export const constantRoutes = [{
+  path: '/login',
+  component: () => import('@/views/Login'),
+  hidden: true
+}, {
+  path: '/404',
+  component: () => import('@/views/404'),
+  hidden: true
+},
+{
+  path: '/',
+  component: Layout,
+  redirect: '/home',
+  children: [{
+    path: '/home',
     name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
-
-const router = new VueRouter({
-  routes
+    component: () => import('@/views/Home'),
+    meta: {
+      title: '首页',
+      icon: 'icon-home'
+    }
+  }]
+}]
+const createRouter = () => new Router({
+  scrollBehavior: () => ({
+    y: 0
+  }),
+  routes: constantRoutes
 })
 
+const router = createRouter()
+const originalPush = Router.prototype.push
+Router.prototype.push = function push (location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
 export default router

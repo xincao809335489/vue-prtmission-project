@@ -1,0 +1,67 @@
+{
+  "categorits": [
+    {
+      "line": "line-01",
+      "title": "水",
+      "imgPath": "",
+      "resources": "9类  数据资源",
+      "site": [
+        {
+          "munber": "2050",
+          "sizeInfo": "地表水检测站点"
+        },
+        {
+          "munber": "1972",
+          "sizeInfo": "自动检测站点"
+        },
+        {
+          "munber": "2050",
+          "sizeInfo": "手工检测站点"
+        }
+      ],
+      "desc": "小时监测数据、自动检测数据、月评价检测站点"
+    },
+    {
+      "line": "line-02",
+      "title": "大气",
+      "imgPath": "",
+      "resources": "9类  数据资源",
+      "site": [
+        {
+          "munber": "2311",
+          "sizeInfo": "大气检测站点"
+        },
+        {
+          "munber": "1972",
+          "sizeInfo": "国控检测站点"
+        },
+        {
+          "munber": "1267",
+          "sizeInfo": "省控检测站点"
+        }
+      ],
+      "desc": "小时监测数据、自动检测数据"
+    },
+    {
+      "line": "line-03",
+      "title": "声",
+      "imgPath": "",
+      "resources": "9类  数据资源",
+      "site": [
+        {
+          "munber": "2323",
+          "sizeInfo": "功能区检测"
+        },
+        {
+          "munber": "918",
+          "sizeInfo": "区域检测"
+        },
+        {
+          "munber": "1973",
+          "sizeInfo": "道路交通"
+        }
+      ],
+      "desc": "小时监测数据、自动检测数据、月评价检测站点"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "admin-token": [
+    {
+      "path": "/users",
+      "name": "User",
+      "component":"Layout",
+      "meta": {
+        "title": "客户管理",
+        "icon": "icon-user"
+      },
+      "children": [
+        {
+          "path": "/users/lists",
+          "name": "Lists",
+          "component": "Lists",
+          "meta": {
+            "title": "客户列表",
+            "icon": "icon-menu"
+          }
+        },
+        {
+          "path": "/users/tree",
+          "name": "Tree",
+          "component": "Tree",
+          "meta": {
+            "title": "树形表单",
+            "icon": "icon-tree"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/permission",
+      "component": "Layout",
+      "children": [
+        {
+          "path": "/permission/btn",
+          "name": "Btn",
+          "component": "Btn",
+          "meta": {
+            "title": "按钮权限",
+            "icon": "icon-anniuquanxianpeizhi_huaban1"
+          }
+        }
+      ]
+    }
+  ],
+  "editor-token": [
+    {
+      "path":"/form",
+      "component":"Layout",
+      "childen":[
+        {
+          "path":"/form/index",
+          "name":"Form",
+          "component":"Form",
+          "meta":{
+            "title":"表单管理",
+            "icon":"icon-biaodan"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/echarts",
+      "name": "Echarts",
+      "component": "Layout",
+      "meta": {
+        "title": "可视化",
+        "icon": "icon-browse"
+      },
+      "children": [
+        {
+          "path": "/echarts/screen",
+          "name": "Screen",
+          "component": "Screen",
+          "meta": {
+            "title": "大屏组件",
+            "icon": "icon-electronics"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "tokens": {
+    "13522423284": {
+      "token": "admin-token"
+    },
+    "18355199263": {
+      "token": "editor-token"
+    }
+  },
+  "users": {
+    "admin-token": {
+      "name": "admin",
+      "roles": ["admin"],
+      "avatar": "https://z3.ax1x.com/2021/04/02/cm01zt.jpg"
+    },
+    "editor-token": {
+      "name": "editor",
+      "roles": ["editor"],
+      "avatar": "https://z3.ax1x.com/2021/04/02/cm00Wn.jpg"
+    }
+  }
+}
