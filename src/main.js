@@ -8,6 +8,11 @@ import './assets/css/index.less'
 import './plugins/element.js'
 // 引入路由权限
 import './permissions.js'
+// VueLoopScroll滚动插件
+import VueLoopScroll from 'vueloopscroll'
+import 'vueloopscroll/lib/vueloopscroll.css'
+Vue.use(VueLoopScroll)
+
 console.log(process.env.VUE_APP_MODE)
 Vue.config.productionTip = false
 

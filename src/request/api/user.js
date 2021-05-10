@@ -1,6 +1,6 @@
 import http from '../http'
 /**
- * testIp为config中配置的代理名称
+ * http为config中配置的代理名称
  */
 export default {
   // 短信验证

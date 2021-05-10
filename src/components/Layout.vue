@@ -7,8 +7,8 @@
       <el-header>
         <div class="header-btn">
           <span class="isFoldBtn" @click="toggleSideBar">
-            <i class="el-icon-s-fold" v-if="isFold"></i>
-            <i class="el-icon-s-unfold" v-else></i>
+            <i class="iconfont icon-mirrorlightctrl" v-if="isFold"></i>
+            <i class="iconfont icon-masterctrl" v-else></i>
           </span>
           <v-bread></v-bread>
         </div>
@@ -102,7 +102,7 @@ export default {
     i {
       display: inline-block;
       font-size: 28px;
-      color: lightgray;
+      color: #000;
       font-weight: 200;
       cursor: pointer;
     }
@@ -124,6 +124,5 @@ export default {
 .el-main {
   color: #333;
   text-align: center;
-  line-height: 160px;
 }
 </style>

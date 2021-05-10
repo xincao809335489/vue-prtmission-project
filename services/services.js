@@ -1,12 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const fs = require('fs')
 const Mock = require('mockjs')
 const apiData = require('./data/login.json') // 引入模拟接口的部分json数据
 const menuData = require('./data/menus.json') // 引入菜单信息
-const {
-  randomCode,
-  sendCode
-} = require('./utils/getMessage')
+const { randomCode, sendCode } = require('./utils/getMessage')
 const app = express()
 const Random = Mock.Random
 // 设置允许跨域访问该服务.
@@ -18,46 +16,61 @@ app.all('*', function (req, res, next) {
   res.header('Content-Type', 'application/json;charset=utf-8')
   next()
 })
-
-const lists = Mock.mock({
-  'data|30': [{
-    'name|+1': ['斑马', '狮子', '野兔', '毛驴'],
-    'id|+1': 0,
-    'desc|+1': ['斑马万里奔腾', '狮子真威猛，害怕', '野兔真可爱', '毛驴真萌萌哒'],
-    date: Random.date(),
-    'src|+1': ['https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg', 'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg', 'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg', 'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg']
-  }]
+// 获取首页数据
+const pics = Mock.mock({
+  'data|33': [
+    {
+      'id|+1': 0,
+      'name|+1': ['杨幂', '胡歌', '刘涛', '赵丽颖'],
+      'engName|+1': ['ym', 'hg', 'lt', 'zly'],
+      date: Random.date(),
+      'src|+1': ['ym/1.webp', 'hg/1.webp', 'lt/1.webp', 'zly/1.webp']
+    }
+  ]
+})
+// 获取图片信息
+const picInfo = Mock.mock({
+  'data|6': [
+    {
+      title: '',
+      engName: '',
+      desc: '',
+      'src|+1': ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp']
+    }
+  ]
 })
 // 解析post请求参数
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+)
 app.use(bodyParser.json()) // data参数以字典格式传输
 // 获取列表数据
-app.post('/getListsData', function (req, res) {
-  const {
-    index,
-    size
-  } = req.body
-  console.log(index, size)
-  const startRow = index * size // 开始显示的行
-  const endRow = (index + 1) * size // 结束显示的行
-  const data = lists.data.slice(startRow, endRow)
-  res.json(Mock.mock({
-    status: 200,
-    data: data,
-    total: lists.data.length
-  }))
+app.post('/getPics', function (req, res) {
+  const { pageIndex, pageSize } = req.body.params
+  const startRow = pageIndex * pageSize // 开始显示的行
+  const endRow = (pageIndex + 1) * pageSize // 结束显示的行
+  const data = pics.data.slice(startRow, endRow)
+  res.json(
+    Mock.mock({
+      status: 200,
+      data: data,
+      pageIndex,
+      pageSize,
+      totalPage: Math.floor(pics.data.length / pageSize)
+    })
+  )
 })
 // 登录数据
 app.post('/login', function (req, res) {
-  const {
-    phone
-  } = req.body
-  res.json(Mock.mock({
-    status: 1,
-    data: apiData.tokens[phone]
-  }))
+  const { phone } = req.body
+  res.json(
+    Mock.mock({
+      status: 1,
+      data: apiData.tokens[phone]
+    })
+  )
 })
 // 获取用户信息
 app.post('/getInfo', function (req, res) {
@@ -72,29 +85,44 @@ app.get('/sendMsg', (req, res) => {
   sendCode(phone, code, function (success) {
     if (success) {
       // 发送成功
-      res.json(Mock.mock({
-        status: 1,
-        msg: '发送验证码成功'
-      }))
+      res.json(
+        Mock.mock({
+          status: 1,
+          msg: '发送验证码成功'
+        })
+      )
     } else {
       // 发送失败
-      res.json(Mock.mock({
-        status: 0,
-        msg: '发送验证码失败'
-      }))
+      res.json(
+        Mock.mock({
+          status: 0,
+          msg: '发送验证码失败'
+        })
+      )
     }
   })
 })
 // 退出登录
 app.get('/logOut', function (req, res) {
-  res.json(Mock.mock({
-    status: 1
-  }))
+  res.json(
+    Mock.mock({
+      status: 1
+    })
+  )
 })
 // 获取菜单数据
 app.post('/menus', function (req, res) {
   const token = req.body.token
   res.send(menuData[token])
+})
+app.post('/getPicInfo', function (req, res) {
+  const { name, engName } = req.body.params
+  for (var i = 0; i < picInfo.data.length; i++) {
+    picInfo.data[i].title = name
+    picInfo.data[i].engName = engName
+    picInfo.data[i].desc = fs.readFileSync('./data/' + engName + '.text', 'utf-8')
+  }
+  res.send(picInfo.data)
 })
 
 // 服务监听
