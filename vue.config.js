@@ -1,5 +1,6 @@
 // 引入多页面的配置pages
 // const pages = require('./src/utils/pages')
+const webpack = require('webpack')
 module.exports = {
   publicPath: '/',
   // 当运行vue-cli-service build时生成的生产环境构建环境的目录。用法和webpack的output.path一样，不要修改output.path
@@ -39,5 +40,14 @@ module.exports = {
         }
       }
     }
+  },
+  configureWebpack: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery', // 创建 '$'、'jQuery'、'window.jQuery' 三个变量指向依赖jquery
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery'
+      })
+    ]
   }
 }

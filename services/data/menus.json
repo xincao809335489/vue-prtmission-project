@@ -47,16 +47,16 @@
   ],
   "editor-token": [
     {
-      "path":"/form",
-      "component":"Layout",
-      "childen":[
+      "path": "/form",
+      "component": "Layout",
+      "children": [
         {
-          "path":"/form/index",
-          "name":"Form",
-          "component":"Form",
-          "meta":{
-            "title":"表单管理",
-            "icon":"icon-biaodan"
+          "path": "/form/index",
+          "name": "Form",
+          "component": "Form",
+          "meta": {
+            "title": "表单管理",
+            "icon": "icon-biaodan"
           }
         }
       ]
@@ -64,7 +64,7 @@
     {
       "path": "/echarts",
       "name": "Echarts",
-      "component": "Layout",
+      "component":"Layout",
       "meta": {
         "title": "可视化",
         "icon": "icon-browse"

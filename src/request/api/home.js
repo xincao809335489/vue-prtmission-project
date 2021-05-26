@@ -10,5 +10,9 @@ export default {
   // 获取图片信息详情
   getInfoData (params) {
     return http.post('/getPicInfo', { params })
+  },
+  // 获取自定义表单的数据
+  getFormData () {
+    return http.get('/getCreateForms')
   }
 }

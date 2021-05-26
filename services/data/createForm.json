@@ -1,0 +1,59 @@
+[
+  {
+    "type": "input",
+    "field": "goods_name",
+    "title": "商品名称"
+  },
+  {
+    "type": "datePicker",
+    "field": "created_at",
+    "title": "创建时间"
+  },
+  {
+    "type": "rate",
+    "field": "rate",
+    "title": "推荐级别",
+    "value": 3.5,
+    "props": {
+      "max": 5,
+      "showText": true,
+      "texts": ["一级", "二级", "三级", "四级", "五级"]
+    },
+
+    "validate": [
+      {
+        "required": true,
+        "type": "number",
+        "min": 2,
+        "message": "请大于2颗星",
+        "trigger": "change"
+      }
+    ]
+  },
+  {
+    "type": "checkbox",
+    "title": "标签",
+    "field": "label",
+    "value": ["1", "2", "3"],
+    "options": [
+      {
+        "value": "1",
+        "label": "好用"
+      },
+      {
+        "value": "2",
+        "label": "方便",
+        "disabled": false
+      },
+      {
+        "value": "3",
+        "label": "实用",
+        "disabled": false
+      },
+      {
+        "value": "4",
+        "label": "有效"
+      }
+    ]
+  }
+]

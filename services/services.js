@@ -4,6 +4,7 @@ const fs = require('fs')
 const Mock = require('mockjs')
 const apiData = require('./data/login.json') // 引入模拟接口的部分json数据
 const menuData = require('./data/menus.json') // 引入菜单信息
+const formData = require('./data/createForm.json') // 引入自定义表单的数据
 const { randomCode, sendCode } = require('./utils/getMessage')
 const app = express()
 const Random = Mock.Random
@@ -120,11 +121,17 @@ app.post('/getPicInfo', function (req, res) {
   for (var i = 0; i < picInfo.data.length; i++) {
     picInfo.data[i].title = name
     picInfo.data[i].engName = engName
-    picInfo.data[i].desc = fs.readFileSync('./data/' + engName + '.text', 'utf-8')
+    picInfo.data[i].desc = fs.readFileSync(
+      './data/' + engName + '.text',
+      'utf-8'
+    )
   }
   res.send(picInfo.data)
 })
-
+// 获取自定义表单的数据
+app.get('/getCreateForms', function (req, res) {
+  res.send(formData)
+})
 // 服务监听
 const server = app.listen('8090', '0.0.0.0', (req, res) => {
   const host = server.address().address

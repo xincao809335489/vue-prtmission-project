@@ -123,6 +123,7 @@ export default {
 }
 .el-main {
   color: #333;
+  padding:1px 12px;
   text-align: center;
 }
 </style>

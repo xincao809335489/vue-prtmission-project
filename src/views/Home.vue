@@ -145,6 +145,7 @@ export default {
         pageSize: this.pageSize
       }
       api.getPicDatas(params).then(res => {
+        console.log(res)
         if (res.status === 200) {
           res.data.forEach(item => {
             item.src = require('../assets/pictures/' + item.src)
@@ -197,7 +198,7 @@ export default {
     height: 280px;
     margin-bottom: 20px;
     .vue-loop-scroll {
-      height: 100%;
+
       span {
         line-height: 2;
         text-align: left;
@@ -217,6 +218,7 @@ export default {
 <style lang="less" scoped>
 .container {
   .col {
+    height:auto;
     margin-bottom: 14px;
   }
   .content {

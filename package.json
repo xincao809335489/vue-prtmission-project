@@ -12,8 +12,10 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "element-china-area-data": "^5.0.2",
     "element-ui": "^2.15.1",
     "glob": "^7.1.6",
+    "jquery": "^3.6.0",
     "js-cookie": "^2.2.1",
     "nprogress": "^0.2.0",
     "vue": "^2.6.11",

@@ -13,7 +13,6 @@ import VueLoopScroll from 'vueloopscroll'
 import 'vueloopscroll/lib/vueloopscroll.css'
 Vue.use(VueLoopScroll)
 
-console.log(process.env.VUE_APP_MODE)
 Vue.config.productionTip = false
 
 new Vue({
