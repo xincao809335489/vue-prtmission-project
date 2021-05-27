@@ -5,6 +5,7 @@ const Mock = require('mockjs')
 const apiData = require('./data/login.json') // 引入模拟接口的部分json数据
 const menuData = require('./data/menus.json') // 引入菜单信息
 const formData = require('./data/createForm.json') // 引入自定义表单的数据
+const clothesData = require('./data/clothes.json') // 引入树形结构数据
 const { randomCode, sendCode } = require('./utils/getMessage')
 const app = express()
 const Random = Mock.Random
@@ -110,6 +111,10 @@ app.get('/logOut', function (req, res) {
       status: 1
     })
   )
+})
+// 获取树形结构数据
+app.get('/getClothesData', function (req, res) {
+  res.send(clothesData)
 })
 // 获取菜单数据
 app.post('/menus', function (req, res) {

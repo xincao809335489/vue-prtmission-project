@@ -69,3 +69,30 @@ export function getCodeToText (codeArray) {
   }
   return area
 }
+/**
+ * 将一个普通的节点数组（带有指向父节点的指针）转换为嵌套的数据结构。
+ * @param {*} data  一组数据
+ * @param {*} option 包含以下字段的对象：
+ *      parentProperty（String）：可以找到父节点链接的属性的名称。默认值：'pid'。
+ *      childrenProperty（String）：将存储子节点的属性的名称。默认值：'children'。
+ *      idProperty（String）：唯一的节点标识符。默认值：'id'。
+ *      nameProperty（String）：节点的名称。默认值：'name'。
+ */
+export function FlatToNested (data, option) {
+  option = option || {}
+  const idProperty = option.idProperty || 'id'
+  const parentProperty = option.parentProperty || 'pid'
+  const childrenProperty = option.childrenProperty || 'children'
+  const res = []
+  const tmpMap = []
+  for (let i = 0; i < data.length; i++) {
+    tmpMap[data[i][idProperty]] = data[i]
+    if (tmpMap[data[i][parentProperty]] && data[i][idProperty] !== data[i][parentProperty]) {
+      if (!tmpMap[data[i][parentProperty]][childrenProperty]) { tmpMap[data[i][parentProperty]][childrenProperty] = [] }
+      tmpMap[data[i][parentProperty]][childrenProperty].push(data[i])
+    } else {
+      res.push(data[i])
+    }
+  }
+  return res
+}

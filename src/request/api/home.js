@@ -14,5 +14,9 @@ export default {
   // 获取自定义表单的数据
   getFormData () {
     return http.get('/getCreateForms')
+  },
+  // 获取树形结构数据
+  getCloseData () {
+    return http.get('/getClothesData')
   }
 }

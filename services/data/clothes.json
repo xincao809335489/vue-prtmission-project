@@ -1,0 +1,77 @@
+[
+  {
+    "id": "1",
+    "name": "女装/男装/内衣",
+    "parentId": "0"
+  },
+  {
+    "id": "2",
+    "name": "女装",
+    "parentId": "1"
+  },
+  {
+    "id": "3",
+    "name": "男装",
+    "parentId": "1"
+  },
+  {
+    "id": "4",
+    "name": "童装",
+    "parentId": "1"
+  },
+  {
+    "id": "5",
+    "name": "内衣",
+    "parentId": "1"
+  },
+  {
+    "id": "6",
+    "name": "连衣裙",
+    "parentId": "2"
+  },
+  {
+    "id": "7",
+    "name": "毛呢外套",
+    "parentId": "2"
+  },
+  {
+    "id": "8",
+    "name": "休闲裤",
+    "parentId": "2"
+  },
+  {
+    "id": "9",
+    "name": "牛仔外套",
+    "parentId": "2"
+  },
+  {
+    "id": "10",
+    "name": "牛仔外套",
+    "parentId": "3"
+  },
+  {
+    "id": "11",
+    "name": "男士防晒衣",
+    "parentId": "3"
+  },
+  {
+    "id": "12",
+    "name": "童鞋",
+    "parentId": "4"
+  },
+  {
+    "id": "13",
+    "name": "黛安芬内衣",
+    "parentId": "5"
+  },
+  {
+    "id": "14",
+    "name": "鞋靴/箱包/配件",
+    "parentId": "0"
+  },
+  {
+    "id": "15",
+    "name": "香奈儿包包",
+    "parentId": "14"
+  }
+]
